@@ -29,6 +29,10 @@ type EchoHandler struct {
 	closing    atomic.Boolean
 }
 
+func NewEchoHandler() *EchoHandler {
+	return &EchoHandler{}
+}
+
 func (h *EchoHandler) Handle(ctx context.Context, conn net.Conn) {
 	if h.closing.Get() {
 		conn.Close()
