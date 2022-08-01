@@ -6,6 +6,7 @@ import (
 
 	"github.com/luxpo/redisx/config"
 	"github.com/luxpo/redisx/lib/logger"
+	"github.com/luxpo/redisx/resp/handler"
 	"github.com/luxpo/redisx/tcp"
 )
 
@@ -34,7 +35,8 @@ func main() {
 				config.Properties.Bind,
 				config.Properties.Port),
 		},
-		tcp.NewEchoHandler(),
+		// tcp.NewEchoHandler(),
+		handler.MakeHandler(),
 	)
 	if err != nil {
 		logger.Error(err)
